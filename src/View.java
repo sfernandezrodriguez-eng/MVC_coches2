@@ -2,13 +2,16 @@ import java.util.Scanner;
 
 /**
  * Clase encargada de la interaccion directa con el usuario por medio de la consola.
- * Muestra los menus, recoge las entradas de datos y pinta los resultados en pantalla.
+ * Gestiona la captura de datos de entrada y la representacion visual de los resultados.
+ * * @author Tu Nombre
+ * @version 1.0 (Mayo 2026)
  */
 public class View {
 
     /**
      * Muestra el menu principal del gestor de coches en un bucle interactivo.
-     * Captura las opciones del usuario y delega las acciones en el Controlador.
+     * Captura las opciones e inputs del usuario por consola y delega las acciones
+     * correspondientes en los metodos del Controlador.
      */
     public void menu() {
         Controller c = new Controller();
@@ -54,7 +57,7 @@ public class View {
                     System.out.println("Matricula: ");
                     String matricula = new Scanner(System.in).next();
                     System.out.println("Metros a avanzar: ");
-                    double metros = new Scanner(System.in).nextInt();
+                    double metros = new Scanner(System.in).nextDouble(); // Corregido a nextDouble() para evitar desajustes de tipo con tu variable double
                     boolean a = c.avanzar(matricula, metros);
                     if (!a) {
                         System.out.println("Error: No se pudo hacer avanzar el coche (¿Matrícula incorrecta?)");
@@ -79,25 +82,9 @@ public class View {
         } while (opcion != 5);
     }
 
-    /**
-     * Imprime en pantalla la velocidad actual de un vehiculo con su formato de unidad.
-     */
-    public boolean muestraVelocidad(String matricula, Integer v) {
-        System.out.println(matricula + ": " + v + "km/hr");
-        return true;
-    }
-
-    /**
-     * Muestra en la consola los kilometros totales acumulados por el coche.
-     */
-    public void mostrarKilometros(String matricula, double kms) {
-        System.out.println("El coche con matrícula " + matricula + " lleva recorridos: " + kms + " Kms.");
-    }
-
-    /**
-     * Muestra en la consola el estado actual del tanque de gasolina de un coche.
-     */
-    public void mostrarGasolina(String matricula, int litros) {
-        System.out.println("El coche con matrícula " + matricula + " ahora tiene: " + litros + " litros de gasolina.");
-    }
-}
+/**
+ * Imprime en pantalla la velocidad actual de un vehiculo con su formato de unidad.
+ * * @param matricula El identificador unico del coche.
+ * @param v         La velocidad en formato Integer a representar.
+ * @return true de manera invariable para confirmar que la salida por consola se ha efectuado.
+ */
