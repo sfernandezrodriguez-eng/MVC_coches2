@@ -88,3 +88,5 @@ public class View {
  * @param v         La velocidad en formato Integer a representar.
  * @return true de manera invariable para confirmar que la salida por consola se ha efectuado.
  */
+
+}
